@@ -146,6 +146,7 @@ void ATP_ThirdPersonCharacter::MakeShot()
 		AArenaProjectile* Projectile = GetWorld()->SpawnActorDeferred<AArenaProjectile>(ProjectileClass,SpawnTransform);
 		if (Projectile)
 		{
+			Projectile->SetOwner(this);
 			Projectile->SetShotDirection(Direction);
 			Projectile->FinishSpawning(SpawnTransform);
 		}

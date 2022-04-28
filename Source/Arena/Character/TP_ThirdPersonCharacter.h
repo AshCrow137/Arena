@@ -26,8 +26,8 @@ public:
 	float FireRate = 2.0f;
 	UPROPERTY( EditAnywhere, BlueprintReadWrite,Category="Character")
 	float TurnSpeed = 5.0f;
-	
-	
+	UPROPERTY( EditAnywhere, BlueprintReadWrite,Category="Character")
+	bool bIsAIControlled = false;
 
 
 	
@@ -50,8 +50,9 @@ protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	// End of APawn interface
-	UPROPERTY( EditAnywhere, BlueprintReadWrite, meta=(AllowPrivateAccess = "true"),Category="Character")
+	UPROPERTY( EditAnywhere, BlueprintReadWrite,Category="Character")
 	UStaticMeshComponent* WeaponMesh;
+	
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Weapon")
 	TSubclassOf<AArenaProjectile> ProjectileClass;
 
