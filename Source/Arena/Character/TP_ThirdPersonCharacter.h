@@ -29,7 +29,7 @@ public:
 	UPROPERTY( EditAnywhere, BlueprintReadWrite,Category="Character")
 	bool bIsAIControlled = false;
 
-
+	void MakeShot();
 	
 
 protected:
@@ -55,6 +55,8 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Weapon")
 	TSubclassOf<AArenaProjectile> ProjectileClass;
+	
+
 
 private:
 
@@ -67,7 +69,7 @@ private:
 
 	void StartShooting();
 	void StopShooting();
-	void MakeShot();
+
 	
 	FTimerHandle ShootTimerHandle;
 

@@ -39,4 +39,5 @@ EBTNodeResult::Type UArenaNextLocationTask::ExecuteTask(UBehaviorTreeComponent& 
 	}
 	Blackboard->SetValueAsVector(AimLockationKey.SelectedKeyName,NavLocation.Location);
 	return EBTNodeResult::Succeeded;
+	
 } 
