@@ -18,14 +18,18 @@ class ATP_ThirdPersonCharacter : public ACharacter
 	
 public:
 	ATP_ThirdPersonCharacter();
+	//Use to Aim with mouse
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category= "Weapon")
 	bool bUseMouseToAim = true;
+	
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Weapon")
 	bool bUseFireRate = false;
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Weapon")
 	float FireRate = 2.0f;
 	UPROPERTY( EditAnywhere, BlueprintReadWrite,Category="Character")
 	float TurnSpeed = 5.0f;
+
+	//Used to change player/enemy score
 	UPROPERTY( EditAnywhere, BlueprintReadWrite,Category="Character")
 	bool bIsAIControlled = false;
 
@@ -34,23 +38,12 @@ public:
 
 protected:
 
-	
-
-	/** Called for forwards/backward input */
 	void MoveForward(float Value);
 
-	/** Called for side to side input */
 	void MoveRight(float Value);
-
-
-
-
-
-protected:
-	// APawn interface
+	
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	// End of APawn interface
-	UPROPERTY( EditAnywhere, BlueprintReadWrite,Category="Character")
+	UPROPERTY( EditDefaultsOnly, BlueprintReadWrite,Category="Character")
 	UStaticMeshComponent* WeaponMesh;
 	
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Weapon")
@@ -62,7 +55,11 @@ private:
 
 	bool bIsAiming = false;
 	void TurnAround(float Value);
+
 	
+
+	
+	//Used to aim with mouse, boolean can be enabled in BP
 	void StartAim();
 	void StopAim();
 	void RotateToCoursor();

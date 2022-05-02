@@ -1,17 +1,12 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "TP_ThirdPersonCharacter.h"
-#include "HeadMountedDisplayFunctionLibrary.h"
 #include "Arena/Controllers/ArenaPlayerController.h"
 #include "Camera/CameraComponent.h"
-#include "Components/ArrowComponent.h"
-#include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
-#include "GameFramework/SpringArmComponent.h"
 #include "Components/StaticMeshComponent.h"
-#include "Components/DecalComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -27,13 +22,6 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 	WeaponMesh=CreateDefaultSubobject<UStaticMeshComponent>("WeaponMesh");
 	WeaponMesh->SetupAttachment(RootComponent);
 	
-	
-	bUseControllerRotationPitch = true;
-	bUseControllerRotationYaw = true;
-	bUseControllerRotationRoll = true;
-
-
-
 }
 
 
@@ -42,9 +30,7 @@ void ATP_ThirdPersonCharacter::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	if (bUseMouseToAim)
 	{
-		
 		RotateToCoursor();
-	
 	}
 	
 }
@@ -53,13 +39,13 @@ void ATP_ThirdPersonCharacter::Tick(float DeltaSeconds)
 
 void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
-	// Set up gameplay key bindings
 	check(PlayerInputComponent);
-
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ATP_ThirdPersonCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ATP_ThirdPersonCharacter::MoveRight);
 	PlayerInputComponent->BindAxis("Turn", this, &ATP_ThirdPersonCharacter::TurnAround);
+	
+//  Can be enabled to aim with pressed RMB if needs to 
 //	PlayerInputComponent->BindAction("Aim",IE_Pressed,this,&ATP_ThirdPersonCharacter::StartAim);
 //	PlayerInputComponent->BindAction("Aim",IE_Released,this,&ATP_ThirdPersonCharacter::StopAim);
 
@@ -99,10 +85,10 @@ void ATP_ThirdPersonCharacter::RotateToCoursor()
 			
 			FHitResult HitResult;
 			PlayerController->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery_MAX,true,HitResult);
-			FVector StartLocation = GetActorLocation();
-			FVector NewRotationLocation = HitResult.Location;
-			FRotator TargetRotation = UKismetMathLibrary::FindLookAtRotation(StartLocation,NewRotationLocation);
-			FRotator NewRotation = FRotator(0,TargetRotation.Yaw,0);
+			const FVector StartLocation = GetActorLocation();
+			const FVector NewRotationLocation = HitResult.Location;
+			const FRotator TargetRotation = UKismetMathLibrary::FindLookAtRotation(StartLocation,NewRotationLocation);
+			const FRotator NewRotation = FRotator(0,TargetRotation.Yaw,0);
 			
 		
 			this->SetActorRotation(NewRotation);

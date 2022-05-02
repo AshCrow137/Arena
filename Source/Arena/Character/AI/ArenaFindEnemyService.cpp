@@ -8,7 +8,6 @@
 UArenaFindEnemyService::UArenaFindEnemyService()
 {
 	NodeName = "Find Enemy";
-	
 }
 
 void UArenaFindEnemyService::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)

@@ -28,8 +28,10 @@ protected:
 	USphereComponent* SphereComponent;
 	UPROPERTY(VisibleDefaultsOnly,Category="Weapon")
 	UProjectileMovementComponent* MovementComponent;
-	UPROPERTY( EditAnywhere, BlueprintReadWrite)
+	UPROPERTY( EditDefaultsOnly, BlueprintReadWrite,Category="Weapon")
 	UStaticMeshComponent* MeshComponent;
+	UPROPERTY( EditAnywhere, BlueprintReadWrite,Category="Weapon")
+	float ProjectileLifeTime = 5.0f;
 	UFUNCTION()
 	void OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* OtherActor,UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 

@@ -17,7 +17,5 @@ class ARENA_API UArenaAIPerceptionComponent : public UAIPerceptionComponent
 public:
 	AActor* GetClosestEnemy() const;
 	AArenaProjectile* GetClosestProjectile() const;
-	
-	
-protected:
+
 };

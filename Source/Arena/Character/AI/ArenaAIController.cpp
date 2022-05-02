@@ -11,13 +11,13 @@ AArenaAIController::AArenaAIController()
 {
 	ArenaPerceptionComponent = CreateDefaultSubobject<UArenaAIPerceptionComponent>("PerceptionComponent");
 	SetPerceptionComponent(*ArenaPerceptionComponent);
-	
-	 
+		 
 }
 
 void AArenaAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	
 	const auto AimActor = GetFocusOnActor();
 	SetFocus(AimActor);
 	

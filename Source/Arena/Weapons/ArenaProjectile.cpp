@@ -42,12 +42,8 @@ void AArenaProjectile::BeginPlay()
 	check(SphereComponent);
 	check(MovementComponent);
 	MovementComponent->Velocity = ShotDirection * MovementComponent->InitialSpeed;
-	//SphereComponent->IgnoreActorWhenMoving(GetOwner(),true);
 	SphereComponent->OnComponentHit.AddDynamic(this,&AArenaProjectile::OnProjectileHit);
-
-	//MeshComponent->IgnoreActorWhenMoving(GetOwner(),true);
-
-	SetLifeSpan(10.0f);
+	SetLifeSpan(ProjectileLifeTime);
 	
 }
 
