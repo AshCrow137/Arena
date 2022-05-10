@@ -20,7 +20,7 @@ void UArenaFindProjectileService::TickNode(UBehaviorTreeComponent& OwnerComp, ui
 		const UArenaAIPerceptionComponent* PerceptionComponent = Cast<UArenaAIPerceptionComponent>(Controller->GetComponentByClass(UArenaAIPerceptionComponent::StaticClass()));
 		if (PerceptionComponent)
 		{
-			AArenaProjectile* Projectile = PerceptionComponent->GetClosestProjectile();
+			AArenaProjectile* Projectile = Cast<AArenaProjectile>(PerceptionComponent->GetClosestProjectile());
 			if (Projectile)
 			{
 				Blackboard->SetValueAsObject(ProjectileActorKey.SelectedKeyName,Projectile);

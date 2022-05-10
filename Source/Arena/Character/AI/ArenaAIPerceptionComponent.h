@@ -16,6 +16,6 @@ class ARENA_API UArenaAIPerceptionComponent : public UAIPerceptionComponent
 	GENERATED_BODY()
 public:
 	AActor* GetClosestEnemy() const;
-	AArenaProjectile* GetClosestProjectile() const;
+	AActor* GetClosestProjectile() const;
 
 };
